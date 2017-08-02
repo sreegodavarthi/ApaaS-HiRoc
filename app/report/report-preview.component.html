@@ -1,0 +1,62 @@
+<div class="container-fluid report-main">
+<div class="row" style="padding-bottom: 6px">
+    <div class="col col-md-6">
+        <div class="report-preview-header">
+            <i class="fa fa-chevron-left"></i>
+            <span (click)="this.router.navigate(['/builder'])" class="report-preview-backlink">Back to Data Selection</span>
+        </div>
+        <h3 class="data-se2-name" style="padding-bottom: 16px;">Selection Preview</h3>
+    </div>
+     <div class="col col-md-6">
+        <div class="pull-right"> 
+            <!--<button class="btn" (click)="this.router.navigate(['/builder'])">Back</button>-->
+            <button [ngClass]='getSubmitButtonCLass()' id="preview-sub-btn" (click)="reportSubmit()">
+                <span class="btn-content">Submit</span>
+            </button>
+        </div>
+    </div>
+</div> 
+<div class="row">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>DATA FIELD</th>
+                    <th>FILTER</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template ngFor let-item [ngForOf]="filterList" let-i="index">
+                    <tr *ngIf="item.isSelected === 'true'">
+                        <td>{{ item.display.displayName }}</td>
+                        <td>{{ item.userInput }}</td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+<modal #modal (onDismiss)="reportClose($event)">
+    <modal-header [show-close]="true" >
+        <h4 class="modal-title">Submision Successful</h4>
+    </modal-header>
+    <modal-body>
+        AN EMAIL CONFIRMATION WILL BE SENT TO YOU.
+    </modal-body>
+    <modal-footer>        
+        <button type="button" class="btn btn-primary" (click)="reportClose($event)">Close</button>
+    </modal-footer>
+</modal>
+
+<modal #modalError>
+    <modal-header [show-close]="true"  >
+        <h4 class="modal-title">Error</h4>
+    </modal-header>
+    <modal-body>
+        There was an error while submiting your report.
+    </modal-body>
+    <modal-footer> 
+        <button type="button" class="btn btn-primary" (click)="modalError.close()">Ok</button>
+    </modal-footer>
+</modal>

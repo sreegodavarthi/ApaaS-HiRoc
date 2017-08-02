@@ -1,0 +1,61 @@
+<div class="container-fluid report-main">
+    <div class="row">
+        <div class="col col-md-9">
+            <h3 class="data-se1-name">Data Selection</h3>
+            <h4 class="select-text">Select the desired data, apply any necessary filters and click submit.</h4>
+        </div>
+        <div class="col col-md-3 pull-right">
+            <div class="pull-right">
+                <h4 id="report-business">Business Name</h4>
+                <h5 class="right-export">{{name}}</h5>
+                <h4 id="report-market">Market TOC</h4>
+                <h5 class="right-number">{{toc}}</h5>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-md-12">
+            <h4 id="report-heading">sorting</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-md-6 col-sm-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <div id="den-rep-sorting-trigger" class="hidden-select-trigger">
+                        <span>Selected</span>
+                        <ul id="den-rep-sorting" class="hidden-select-menu">
+                            <li id="cpc_0" data-value="2">Selected</li>
+                            <li id="cpc_1" data-value="1">Default</li>
+                        </ul>
+                    </div>
+                    <input type="text" #searchTxt (keyup)="0" (keypress)="preventEnter($event)" class="form-control report-input-form-control"
+                        id="reportbuild" name="reportbuild" placeholder="Search">
+                    <span class="fa fa-search report-search-cls"></span>
+                </div>
+            </form>
+        </div>
+        <div class="col col-md-6 col-sm-6">
+            <div class="report-builder-btn-container">
+                <button class="btn back-btn" (click)="this.router.navigate(['/search'])">Back</button>
+                <button [ngClass]='contButtonClass' id="builder-cont-btn" (click)="reportPreview($event)">
+                    <span class="btn-content">Continue</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row report-cards-build" [ngSwitch]="filterList.length">
+        <div *ngSwitchCase="'0'" class="center">
+            <div style="vertical-align: middle;text-align: center;" class="progress-circle progress-indeterminate progress-lg"></div>
+        </div>
+        <div *ngSwitchDefault class="list-group col col-md-12" dnd-sortable-container [sortableData]="filterList">
+            <template ngFor let-item [ngForOf]="filterList" let-i="index">
+                <div class="list-group-item col-lg-4 col-md-6 col-sm-6 col-xs-12" [ngClass]="{'grayout': searchTxt.value != '' && item.display.displayName.toLowerCase().indexOf(searchTxt.value.toLowerCase()) == -1 && item.id.toLowerCase().indexOf(searchTxt.value.toLowerCase()) == -1}"
+                    style="border:0" dnd-sortable [sortableIndex]="i">
+                    <report-dnd [item]="item" [itemsRenderedCount]="i" (onShowPopup)="showModalFilter($event)"></report-dnd>
+                </div>
+            </template>
+        </div>
+    </div>
+    <report-modal #templateBuilderModal [item]="filterItem" (onClose)="updateItem($event)"></report-modal>
+</div>

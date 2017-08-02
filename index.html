@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+  <base href="/denali"> 
+  <title>Denali</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=Edge"/> 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="denali/styles.css">
+  <!-- 1. Load libraries -->
+  <!-- Polyfill for older browsers -->
+  <script src="denali/node_modules/core-js/client/shim.min.js"></script>
+  <script src="denali/node_modules/zone.js/dist/zone.js"></script>
+  <script src="denali/node_modules/reflect-metadata/Reflect.js"></script>
+  <script src="denali/node_modules/systemjs/dist/system.src.js"></script>
+
+  <!-- 2. Configure SystemJS -->
+  <script src="denali/systemjs.config.js"></script>
+  <script>
+      System.import('app').catch(function(err){ console.error(err); });
+  </script>
+
+  <!-- Bootstrap -->
+  <link href="denali/css/bootstrap.min.css" rel="stylesheet">
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  <!-- Bootstrap code above here -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link type="text/css" rel="stylesheet" href="denali/dist/styles/dls.css" media="all">
+  <link type="text/css" rel="stylesheet" href="denali/css/reset.css" />
+  <link type="text/css" rel="stylesheet" href="denali/css/index.css" />
+  <link type="text/css" rel="stylesheet" href="denali/css/typeahead.css" />
+  <link rel="stylesheet" type="text/css" href="denali/node_modules/ng2-dnd/style.css">
+  <link rel="shortcut icon" href="denali/images/favicon.ico" />
+
+
+</head>
+<!-- 3. Display the application -->
+
+<body>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js"></script>
+  <!-- Bootstrap's JavaScript Lib -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="denali/js/typeahead.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <my-app>
+      <div class="center">
+        <div style="vertical-align: middle;text-align: center;" class="progress-circle progress-indeterminate progress-lg"></div>
+      </div> 
+  </my-app>
+</body>
+
+</html>

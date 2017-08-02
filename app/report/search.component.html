@@ -1,0 +1,32 @@
+<div class="container-fluid search-main" id="hero-container">
+	<div class="col-md-7 col-lg-7 col-sm-6" id="hero-text">
+		Strategic Supplier Reports
+	</div>
+	<div class="col-md-5 col-lg-5 col-sm-6" id="form area">
+		<div class="form-group has-feedback search-form">
+			<label for="businessTypeahead" id="input-label-alignment">Find a Business</label>
+			<input type="text" (keypress)="checkInputKey($event)" class="form-control" id="txtName" name="txtName" 
+			placeholder="Enter a Business Name or Market TOC">
+			<span class="fa fa-search form-control-feedback search-cls"></span>
+			 
+		</div>
+		<button type="button" #continueButton (click)="goToReportBuilder($event)" class="btn-primary">Continue</button>
+	</div>
+</div>
+
+<!--
+	Modal npm component: 
+	https://github.com/dougludlow/ng2-bs3-modal
+-->
+
+<!--<button type="button" class="btn btn-default" (click)="modal.open()">Open modal!</button>
+
+<modal #modal>
+	<modal-header [show-close]="true">
+		<h4 class="modal-title">I'm a modal!</h4>
+	</modal-header>
+	<modal-body>
+		Hello World!
+	</modal-body>
+	<modal-footer [show-default-buttons]="true"></modal-footer>
+</modal>-->

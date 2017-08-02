@@ -1,0 +1,29 @@
+<modal #modal>
+    <modal-header [show-close]="true">
+        <h4 class="modal-title">{{item?.display?.displayName}}</h4>
+    </modal-header>
+    <modal-body class="modal-body-element">
+        <div class="row">
+            <div class="col col-md-12">
+            <span class="modal-body-text">{{item?.display?.description}}</span>
+            </div>
+        </div>
+        {{showPrimitiveDiv}}
+        <div class="row model-comp-text" [hidden]="item?.dataCategory !== 'Range'">
+             <div class="col col-md-12 form-group">
+                <input #inputMin type="text" (keypress)="validateInput($event)" (keyup)="validateRange($event)"  maxlength="2000" [attr.placeholder]="getPlacholderMin()" id="reportbuild" name="reportbuild" class="form-control modal-form-input">
+                <input #inputMax type="text" (keypress)="validateInput($event)" (keyup)="validateRange($event)"  maxlength="2000" [attr.placeholder]="getPlacholderMax()" id="reportbuild" name="reportbuild" class="form-control modal-form-input">
+            </div>
+        </div>
+        <div class="row model-comp-text" [hidden]="item?.dataCategory !== 'Primitive'">
+             <div class="col col-md-12 form-group">
+                <input #inputValue type="text"  maxlength="2000" (keypress)="validateInput($event)" (keyup)="validateRange($event)" [attr.placeholder]="getPlacholderInput()" id="reportbuild" name="reportbuild" class="form-control modal-form-input"> 
+            </div>
+        </div>
+        <!--<span>{{showError}}</span>-->
+    </modal-body>
+    <modal-footer>
+        <!--<button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Cancel</button>-->
+        <button type="button" #submitButton class="btn btn-primary" (click)="close()">Submit</button>
+    </modal-footer>
+</modal>

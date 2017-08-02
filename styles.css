@@ -1,0 +1,118 @@
+/* Master Styles */
+
+h1 {
+	color: #369;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 250%;
+}
+
+h2,
+h3 {
+	color: #444;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: lighter;
+}
+
+body {
+	margin: 2em;
+}
+
+.slideUp {
+	animation-name: slideUp;
+	-webkit-animation-name: slideUp;
+	animation-duration: 1.5s;
+	-webkit-animation-duration: 1.5s;
+	animation-timing-function: ease-in;
+	-webkit-animation-timing-function: ease-in;
+	visibility: visible !important;
+}
+
+@keyframes slideUp {
+	0% {
+		transform: translateY(-100%);
+	}
+	50% {
+		transform: translateY(30%);
+	}
+	65% {
+		transform: translateY(20%);
+	}
+	80% {
+		transform: translateY(10%);
+	}
+	95% {
+		transform: translateY(5%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
+}
+
+.animate {
+	-webkit-transform: scale(0.6);
+	transform: scale(0.6);
+	-webkit-animation: scaleUp ease-in-out forwards;
+	animation: scaleUp ease-in-out forwards;
+	opacity: 0;
+}
+
+.animateOut {
+	-webkit-transform: scale(0.6);
+	transform: scale(0.6);
+	-webkit-animation: flyOut ease-in-out forwards;
+	animation: flyOut ease-in-out forwards; 
+	opacity: 1 !important;
+	transform: scale(1);
+	filter: blur(0);
+}
+
+.shown {
+	opacity: 1 !important;
+}
+
+@-webkit-keyframes scaleUp {
+	0% {}
+	100% {
+		-webkit-transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes scaleUp {
+	0% {}
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes flyin {
+	to {
+		filter: blur(0);
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes flyOut {
+	to {
+		filter: blur(4px);
+		transform: scale(0.5);
+		opacity: 0;
+		display: none;
+	}
+}
+
+.center {
+	line-height: 250px;
+	height: 250px;
+	text-align: center;
+	width:100%;
+}
+
+.center div {
+	line-height: 1.5;
+	display: inline-block;
+	vertical-align: middle;
+}

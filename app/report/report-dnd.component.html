@@ -1,0 +1,33 @@
+<div class="col report-cards" [attr.id]="'DndItem' + itemsRenderedCount" [attr.data-indx]='itemsRenderedCount' #dndElement>
+    <div class="report-card-container">
+        <div class="row r-c-row">
+            <div class="col col-lg-6 col-md-6 col-sm-6 r-c-col">
+                <span>
+                    <!--{{item.dataCategory}} and {{item.userInput.length}}-->
+                    <h4 class="business-name small-font" style="font-size:13px;" *ngIf="item.dataCategory === 'Range' || (item.dataCategory === 'Primitive'  && item.userInput.length > 0)">{{item.display.displayName}}</h4> 
+                    <h4 class="business-name" style="font-size:15px;" *ngIf="(item.dataCategory !== 'Range') && (item.dataCategory === 'Primitive' && item.userInput.length === 0)">{{item.display.displayName}}</h4> 
+                    <div id="range-container" *ngIf="item.dataCategory === 'Range' ">
+                        <h4 class="export-num">
+                            <span>Min: {{item.minValue}}</span>
+                            <span style="padding-left:4px;">Max: {{item.maxValue}}</span>
+                        </h4>
+                    </div>
+                    <div id="primitive-container" *ngIf="item.dataCategory === 'Primitive'">
+                         <h4 class="export-num">{{item.userInput}}</h4>
+                    </div>
+                </span>
+            </div>
+            <div class="col col-lg-6 col-md-6 col-sm-6 icons-col">
+                <span class="icon-one" [style.display]="isReadOnly ? 'none' : 'inline'"><i class="sprite" (click)="openFilter(item)"  [ngClass]="getFilterClass(item)"></i></span>
+                <span class="icon-two">
+                    <i class="sprite" (click)="changeSelected()"
+                     [ngClass]="getSelectionClass(item)"  #tooltipIcon2>
+                    </i>
+                </span>
+                <span class="icon-three">
+                    <i class="sprite sprite-information" #tooltipIcon></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
